@@ -33,14 +33,16 @@
     if (!b || b.status === 'missing') return renderMissing(b && b.reason);
     var amt = b.amount_wanyi != null ? (b.amount_wanyi + ' 万亿') :
       (b.amount_yi != null ? (XGCommon.fmtNum(b.amount_yi) + ' 亿') : '—');
+    var volBand = b.volume_band
+      ? ' <span class="tiny">(' + b.volume_band + ')</span>'
+      : '';
     return statusBadge(b.status) +
       '<span class="badge">游客精简</span>' +
       '<span class="tiny">截止 ' + (b.as_of || '') + '</span>' +
       '<div class="grid2" style="margin-top:10px">' +
       '<div class="tile"><div class="k">涨 / 跌家数</div><div class="v">' +
         XGCommon.fmtNum(b.up_count) + ' / ' + XGCommon.fmtNum(b.down_count) + '</div></div>' +
-      '<div class="tile"><div class="k">成交额</div><div class="v">' + amt +
-        ' <span class="tiny">(' + (b.volume_band || '—') + ')</span></div></div>' +
+      '<div class="tile"><div class="k">成交额</div><div class="v">' + amt + volBand + '</div></div>' +
       '<div class="tile"><div class="k">风格</div><div class="v" style="font-size:0.95rem">' +
         (b.style_label || '—') + '</div></div>' +
       '<div class="tile"><div class="k">情绪相位</div><div class="v" style="font-size:0.95rem">' +
@@ -53,13 +55,25 @@
     if (!b || b.status === 'missing') return renderMissing(b && b.reason);
     var rows = (b.rows || []).slice(0, 3);
     var html = rows.map(function (r) {
-      var dir = r.inflow_yi == null ? '—' :
-        (Number(r.inflow_yi) >= 0 ? '↑' : '↓');
-      var inflow = r.inflow_yi == null ? '—' : (r.inflow_yi + ' 亿');
+      var sig = r.signal;
+      if (sig == null || sig === '') {
+        if (r.inflow_yi != null) sig = Number(r.inflow_yi) >= 0 ? '↑' : '↓';
+        else sig = '—';
+      }
       return '<tr><td>' + r.rank + '</td><td>' + (r.industry || '') +
-        '</td><td>' + dir + ' ' + inflow + '</td></tr>';
+        '</td><td>' + sig + '</td></tr>';
     }).join('');
-    var rest = Math.max(0, (b.rows || []).length - 3);
+    var rest = 0;
+    if (b.n_sectors_total != null) {
+      rest = Math.max(0, Number(b.n_sectors_total) - rows.length);
+    } else if (b.n_preview != null) {
+      rest = Math.max(0, Number(b.n_preview) - rows.length);
+      if (rest === 0 && (b.rows || []).length > rows.length) {
+        rest = (b.rows || []).length - rows.length;
+      }
+    } else {
+      rest = Math.max(0, (b.rows || []).length - rows.length);
+    }
     return statusBadge(b.status) +
       '<span class="badge">Top3 预览</span>' +
       '<span class="tiny">' + (b.as_of || '') + '</span>' +
@@ -78,9 +92,14 @@
     var tip = '';
     if (b.read_tips && b.read_tips.length) tip = b.read_tips[0];
     else tip = '先对照温度与 Top3 板块，把「我认为资金在往哪类板块」写成自己的笔记假设——不写个股买卖。';
+    var newsTip = '';
+    if (b.news_tip && b.news_tip.text) {
+      newsTip = '<p class="tiny muted" style="margin:6px 0 0">' + b.news_tip.text + '</p>';
+    }
     return statusBadge(b.status) +
       '<span class="badge">情绪一句</span>' +
       '<p style="font-size:1.05rem;margin:10px 0">' + (b.one_liner || b.fallback || '—') + '</p>' +
+      newsTip +
       '<div class="read-tip"><div class="k">今日怎么读</div><p class="muted" style="margin:4px 0 0">' + tip + '</p></div>' +
       '<p class="tiny" style="margin-top:8px">快讯全日列表在完整日包。描述性语句，非买卖指令。</p>';
   }
@@ -106,6 +125,7 @@
       '<p class="muted" style="margin-top:10px">情绪相位：' + (b.phase_name || '—') +
       (b.temp_score != null ? '（' + b.temp_score + '分）' : '') +
       ' · 风格：' + (b.style_label || '—') + '</p>' +
+      near5Html(b.near5_compare) +
       '<p class="tiny">只读描述，不构成操作建议。</p>';
   }
 
@@ -117,6 +137,13 @@
         '</td><td>' + inflow + '</td></tr>';
     }).join('');
     var tips = (b.read_tips || []).map(function (t) { return '<li>' + t + '</li>'; }).join('');
+    var dimsNote = '';
+    if (b.dims) {
+      var ds = b.dims.status;
+      if (ds === 'partial' || ds === 'missing' || ds === 'stub' || !ds) {
+        dimsNote = '<p class="tiny muted">细项逐步补齐</p>';
+      }
+    }
     return statusBadge(b.status) +
       '<span class="badge ok">日包完整</span>' +
       '<span class="tiny">' + (b.title || '资金异动板块参考') + ' · ' + (b.as_of || '') + '</span>' +
@@ -127,8 +154,9 @@
       '<p class="tiny">口径：n_stocks=' + XGCommon.fmtNum(b.n_stocks) +
       ' · unlabeled=' + XGCommon.fmtNum(b.n_unlabeled) +
       ' · sectors=' + XGCommon.fmtNum(b.n_sectors) + '（默认不展示成分个股）</p>' +
+      dimsNote +
       (tips ? '<ul class="tiny">' + tips + '</ul>' : '') +
-      '<p class="tiny muted">连榜轨迹（近5日上榜）· 即将开放</p>';
+      streakHtml(b.streak || b.lianbang || b.near5_streak);
   }
 
   function renderMoodFull(b) {
@@ -141,6 +169,31 @@
       '<p style="font-size:1.05rem;margin:10px 0">' + (b.one_liner || b.fallback || '—') + '</p>' +
       (items ? '<ul>' + items + '</ul>' : '<p class="muted">快讯暂无</p>') +
       '<p class="tiny">来源 ' + (b.source || '—') + ' · 描述性语句，非买卖指令。</p>';
+  }
+
+
+  function near5Html(near5) {
+    if (!near5) {
+      return '<p class="tiny muted" style="margin-top:8px">近5日对比：积累中</p>';
+    }
+    var st = near5.status;
+    var series = near5.series || [];
+    if (st === 'missing' || st === 'stub' || st === 'partial' || !series.length || series.length < 2) {
+      return '<p class="tiny muted" style="margin-top:8px">近5日对比：积累中</p>';
+    }
+    return '<p class="tiny muted" style="margin-top:8px">近5日对比已就绪（' + series.length + ' 日）</p>';
+  }
+
+  function streakHtml(streak) {
+    if (!streak) {
+      return '<p class="tiny muted">连榜轨迹（近5日上榜）：积累中</p>';
+    }
+    var st = streak.status;
+    var rows = streak.rows || streak.items || streak.series || [];
+    if (st === 'missing' || st === 'stub' || st === 'partial' || !rows.length) {
+      return '<p class="tiny muted">连榜轨迹（近5日上榜）：积累中</p>';
+    }
+    return '<p class="tiny muted">连榜轨迹（近5日上榜）：已有 ' + rows.length + ' 条</p>';
   }
 
   function preferApi() {
@@ -156,7 +209,9 @@
   function renderPack(pack, from) {
     var member = isMember();
     var meta = pack.meta || {};
-    var blocks = pack.blocks || {};
+    var blocks = member
+      ? (pack.full_pack || pack.blocks || {})
+      : (pack.free_teaser || pack.blocks || {});
     var order = pack.render_order || ['market_temp', 'fund_sector', 'news_mood'];
     var elMeta = document.getElementById('pack-meta');
     if (elMeta) {
@@ -174,6 +229,16 @@
       badge.className = 'badge ' + (member ? 'ok' : 'partial');
     }
 
+    function moodTeaserMerged(b) {
+      var merged = {};
+      var src = b || {};
+      Object.keys(src).forEach(function (k) { merged[k] = src[k]; });
+      if ((!merged.read_tips || !merged.read_tips.length) && blocks.read_tip) {
+        merged.read_tips = [blocks.read_tip];
+      }
+      return renderMoodTeaser(merged);
+    }
+
     var map = member
       ? {
           market_temp: { title: '市场温度 · 完整卡', render: renderMarketTempFull },
@@ -183,7 +248,7 @@
       : {
           market_temp: { title: '市场温度 · 精简', render: renderMarketTempTeaser },
           fund_sector: { title: '资金异动 · Top3', render: renderFundTeaser },
-          news_mood: { title: '情绪一句', render: renderMoodTeaser }
+          news_mood: { title: '情绪一句', render: moodTeaserMerged }
         };
 
     var root = document.getElementById('pack-blocks');
@@ -254,9 +319,17 @@
       fromMock().catch(fail);
       return;
     }
-    fetchJson(API_URL)
+    var member = isMember();
+    var viewUrl = API_URL + (member ? '?view=full' : '?view=free');
+    var viewLabel = member ? 'api:8310?view=full' : 'api:8310?view=free';
+    fetchJson(viewUrl)
       .then(function (pack) {
-        renderPack(pack, 'api:8310');
+        renderPack(pack, viewLabel);
+      })
+      .catch(function () {
+        return fetchJson(API_URL).then(function (pack) {
+          renderPack(pack, 'api:8310');
+        });
       })
       .catch(function () {
         return fromMock();
