@@ -92,9 +92,9 @@
   function getRedeemPool() {
     /* demo codes: tool_month_demo / tool_year_demo / pack_quota_demo */
     return getJSON('redeem_pool', {
-      tool_month_demo: { plan: 'tool_month', days: 30, label: '日更复盘包会员·月（演示）' },
-      tool_year_demo: { plan: 'tool_year', days: 365, label: '日更复盘包会员·年（演示）' },
-      pack_quota_demo: { plan: 'pack_quota', days: 0, label: '额度加油包（演示）', bumpNotes: 200, bumpWatch: 100 }
+      tool_month_demo: { plan: 'tool_month', days: 30, label: '日更复盘包会员·月' },
+      tool_year_demo: { plan: 'tool_year', days: 365, label: '日更复盘包会员·年' },
+      pack_quota_demo: { plan: 'pack_quota', days: 0, label: '额度加油包', bumpNotes: 200, bumpWatch: 100 }
     });
   }
 

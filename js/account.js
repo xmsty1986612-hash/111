@@ -37,7 +37,7 @@
     var orders = XGStorage.getOrders();
     var box = document.getElementById('acc-orders');
     if (!orders.length) {
-      box.innerHTML = '<p class="muted">暂无本机订单记录。</p>';
+      box.innerHTML = '<p class="muted">暂无本地订单记录。</p>';
     } else {
       box.innerHTML = '<table class="data"><thead><tr><th>订单号</th><th>SKU</th><th>金额</th><th>状态</th></tr></thead><tbody>' +
         orders.map(function (o) {
@@ -68,7 +68,7 @@
         throw new Error((res.j && res.j.error) || 'api_fail');
       }).catch(function () {
         var r = XGStorage.redeemCode(code);
-        msgEl.textContent = r.msg + (r.ok ? '' : '（已回退本机演示池）');
+        msgEl.textContent = r.msg + (r.ok ? '' : '（已回退本地兑换池）');
         render();
       });
     };

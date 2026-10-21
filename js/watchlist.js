@@ -9,7 +9,7 @@
     document.getElementById('wl-badge').innerHTML = XGCommon.memberBadgeHtml();
     var box = document.getElementById('wl-list');
     if (!list.length) {
-      box.innerHTML = '<div class="empty">暂无自选。添加后仅本地保存（演示）。</div>';
+      box.innerHTML = '<div class="empty">暂无自选。添加后仅本地保存。</div>';
       return;
     }
     box.innerHTML = list.map(function (it, i) {

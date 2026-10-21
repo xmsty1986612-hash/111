@@ -62,7 +62,7 @@
         link.setAttribute('aria-disabled', 'true');
         link.style.pointerEvents = 'none';
         link.style.opacity = '0.85';
-        link.textContent = '留资通道筹备中（扫码付款后保留订单号，稍后按页内说明开通）';
+        link.textContent = '留资通道筹备中（验证期请勿付款；正式开通时保留订单号按页内说明联系）';
       } else {
         link.href = url;
         link.textContent = '打开飞书登记表';

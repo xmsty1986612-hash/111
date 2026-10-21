@@ -21,9 +21,9 @@
     return '<div class="member-wall">' +
       '<div class="member-wall-lock" aria-hidden="true">🔒</div>' +
       '<p class="member-wall-title">' + (label || '完整日包已锁定') + '</p>' +
-      '<p class="muted tiny">游客只看到角。开通日包会员可打开完整温度卡、板块全表与快讯汇编——仍止于板块与事实，不含个股买卖建议。</p>' +
+      '<p class="muted tiny">上面是游客角。会员多：全板块表、资金细项、近几日反复上榜、全日快讯——仍止于事实，不含个股买卖建议。</p>' +
       '<div class="row-actions">' +
-      '<a class="btn primary" href="pricing.html">打开完整日包</a>' +
+      '<a class="btn primary" href="pricing.html">看完整日包</a>' +
       '<a class="btn" href="account.html">我有兑换码</a>' +
       '</div></div>';
   }
@@ -94,14 +94,19 @@
     else tip = '先对照温度与 Top3 板块，把「我认为资金在往哪类板块」写成自己的笔记假设——不写个股买卖。';
     var newsTip = '';
     if (b.news_tip && b.news_tip.text) {
-      newsTip = '<p class="tiny muted" style="margin:6px 0 0">' + b.news_tip.text + '</p>';
+      newsTip =
+        '<div class="read-tip" style="margin-top:10px">' +
+        '<div class="k">一条值得停一秒</div>' +
+        '<p style="margin:4px 0 0">' + b.news_tip.text + '</p>' +
+        (b.news_tip.time ? '<p class="tiny muted" style="margin:4px 0 0">' + b.news_tip.time + ' · 事实汇编，非推荐</p>' : '') +
+        '</div>';
     }
     return statusBadge(b.status) +
       '<span class="badge">情绪一句</span>' +
       '<p style="font-size:1.05rem;margin:10px 0">' + (b.one_liner || b.fallback || '—') + '</p>' +
       newsTip +
-      '<div class="read-tip"><div class="k">今日怎么读</div><p class="muted" style="margin:4px 0 0">' + tip + '</p></div>' +
-      '<p class="tiny" style="margin-top:8px">快讯全日列表在完整日包。描述性语句，非买卖指令。</p>';
+      '<div class="read-tip"><div class="k">今天怎么读</div><p class="muted" style="margin:4px 0 0">' + tip + '</p></div>' +
+      '<p class="tiny" style="margin-top:8px">更多快讯在完整日包。描述性语句，非买卖指令；个股名仅作事实。</p>';
   }
 
   /* —— 会员全量 —— */
@@ -246,9 +251,9 @@
           news_mood: { title: '快讯汇编与情绪', render: renderMoodFull }
         }
       : {
-          market_temp: { title: '市场温度 · 精简', render: renderMarketTempTeaser },
-          fund_sector: { title: '资金异动 · Top3', render: renderFundTeaser },
-          news_mood: { title: '情绪一句', render: moodTeaserMerged }
+          market_temp: { title: '今日温度', render: renderMarketTempTeaser },
+          fund_sector: { title: '钱往哪涌了（先看前三）', render: renderFundTeaser },
+          news_mood: { title: '情绪一句 · 一条快讯', render: moodTeaserMerged }
         };
 
     var root = document.getElementById('pack-blocks');
@@ -267,7 +272,7 @@
     if (!member) {
       var wall = document.createElement('div');
       wall.className = 'card';
-      wall.innerHTML = '<h2>完整日包</h2>' + memberWall('温度全文 · 板块全表 · 快讯汇编已锁定');
+      wall.innerHTML = '<h2>完整日包</h2>' + memberWall('温度全文 · 板块全表 · 更多快讯已锁定');
       root.appendChild(wall);
     }
 
@@ -277,7 +282,7 @@
         cta.innerHTML =
           '<div class="card">' +
           '<h2>开包完成</h2>' +
-          '<p class="muted">把假设写进自己的笔记；连榜轨迹即将开放。</p>' +
+          '<p class="muted">把假设写进自己的笔记；近几日反复上榜等历史字段攒够再亮。</p>' +
           '<div class="row-actions">' +
           '<a class="btn primary" href="notes.html">写复盘笔记</a>' +
           '<a class="btn" href="watchlist.html">管理自选</a>' +
@@ -285,10 +290,11 @@
       } else {
         cta.innerHTML =
           '<div class="card">' +
-          '<h2>打开完整日包 / 深观察</h2>' +
-          '<p class="muted">游客只看到角。完整板块资金表、深层卡与快讯汇编在日包会员里——不含个股买卖建议。</p>' +
+          '<h2>看完整日包</h2>' +
+          '<p class="muted">上面是游客角：温度精简 · 板块前三 · 一条快讯。会员多：<strong>全板块表、资金细项、近几日反复上榜、全日快讯</strong>。</p>' +
+          '<p class="tiny">不含个股买卖建议。</p>' +
           '<div class="row-actions">' +
-          '<a class="btn primary" href="pricing.html">打开完整日包</a>' +
+          '<a class="btn primary" href="pricing.html">看完整日包</a>' +
           '<a class="btn" href="notes.html">先写一条笔记</a>' +
           '</div></div>';
       }

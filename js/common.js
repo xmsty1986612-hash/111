@@ -26,7 +26,7 @@
     var nav = document.getElementById('site-nav');
     if (nav) {
       var cur = currentPage();
-      var html = '<span class="brand">选股工具站</span>';
+      var html = '<span class="brand">日更复盘</span>';
       PAGES.forEach(function (p) {
         var cls = (p.href === cur || p.id === activeId) ? 'active' : '';
         html += '<a class="' + cls + '" href="' + p.href + '">' + p.label + '</a>';
@@ -38,7 +38,7 @@
     var foot = document.getElementById('site-footer');
     if (foot) {
       foot.innerHTML =
-        '<p>收费为<strong>日更复盘包会员费</strong>（完整日包 / 深观察：全表、深卡、连榜与开包身份；笔记导出为附带），不是投顾服务费。</p>' +
+        '<p>收费为<strong>日更复盘包会员费</strong>（完整日包 / 深观察：全表、细项、更全快讯；笔记导出为附带），不是投顾服务费。</p>' +
         '<p>商品名：日更复盘包会员（副标深观察）、导出特权包、复盘本加页。禁止荐股/解盘/今日标的等表述。</p>' +
         '<p><a href="legal.html">免责与隐私</a> · <a href="pay.html">购买</a> · <a href="account.html">开通状态</a></p>';
     }
