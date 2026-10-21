@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复盘笔记 · 选股工具站</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+  <div class="card">
+    <h2>复盘笔记 <span id="nt-badge"></span></h2>
+    <p class="muted tiny">私密记录：标的 / 理由 / 计划 / 事后。免费帽 ≤30。禁止写成买卖指令对外传播。</p>
+    <div class="field"><label>标的（可选代码或主题）</label><input id="nt-symbol" maxlength="40"></div>
+    <div class="field"><label>事实</label><textarea id="nt-fact" rows="2" placeholder="客观数字/事件，不写买卖"></textarea></div>
+    <div class="field"><label>假设</label><textarea id="nt-hypo" rows="2"></textarea></div>
+    <div class="field"><label>计划 / 验证</label><textarea id="nt-plan" rows="2"></textarea></div>
+    <div class="field"><label>事后结果</label><textarea id="nt-result" rows="2"></textarea></div>
+    <div class="row-actions">
+      <button class="btn primary" type="button" id="nt-add">保存笔记</button>
+      <span class="tiny" id="nt-quota"></span>
+    </div>
+    <p class="tiny" id="nt-err" style="color:var(--amber)"></p>
+    <div id="nt-list" style="margin-top:14px"></div>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/notes.js"></script>
+<script>XGNotes.init();</script>
+<script>
+XGCommon.renderChrome('notes');
+XGCommon.gateDisclaimer();
+</script>
+</body>
+</html>

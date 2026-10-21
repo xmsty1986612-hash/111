@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自选 · 选股工具站</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+  <div class="card">
+    <h2>自选 / 观察列表 <span id="wl-badge"></span></h2>
+    <p class="muted tiny">用户自管代码与备注；一期可不接行情。免费帽 ≤20，会员扩容。</p>
+    <div class="grid2">
+      <div class="field"><label>代码</label><input id="wl-code" placeholder="如 600000" maxlength="12"></div>
+      <div class="field"><label>名称（可选）</label><input id="wl-name" placeholder="用户自填" maxlength="32"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>分组</label><input id="wl-group" placeholder="默认" maxlength="20"></div>
+      <div class="field"><label>备注</label><input id="wl-note" placeholder="仅自己可见" maxlength="80"></div>
+    </div>
+    <div class="row-actions">
+      <button class="btn primary" type="button" id="wl-add">添加</button>
+      <span class="tiny" id="wl-quota"></span>
+    </div>
+    <p class="tiny" id="wl-err" style="color:var(--amber)"></p>
+    <div id="wl-list" style="margin-top:14px"></div>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/watchlist.js"></script>
+<script>XGWatchlist.init();</script>
+<script>
+XGCommon.renderChrome('watchlist');
+XGCommon.gateDisclaimer();
+</script>
+</body>
+</html>

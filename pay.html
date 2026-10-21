@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开通日更复盘包会员</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+  <div class="card">
+    <h2>开通日更复盘包会员</h2>
+    <p class="muted">支付的是<strong>日更复盘包 / 深观察</strong>费用（完整日包 + 深卡 + 连榜 + 身份）；<strong>不是荐股费，不是更准必赚</strong>。商户：厦门复昱柯德商贸有限公司（拉卡拉 NO.226031000070482045）。</p>
+    <div class="field">
+      <label>选择 SKU</label>
+      <select id="pay-sku">
+        <option value="tool_month" data-amount="28">日更复盘包会员·月 · ¥28</option>
+        <option value="tool_year" data-amount="198">日更复盘包会员·年 · ¥198</option>
+        <option value="pack_export" data-amount="6">导出特权包 · ¥6</option>
+        <option value="pack_expand" data-amount="9">复盘本加页 · ¥9</option>
+      </select>
+    </div>
+    <div class="field"><label>微信号（开通联系）</label><input id="pay-wx" placeholder="必填" maxlength="40"></div>
+    <div class="field"><label>手机（可选）</label><input id="pay-phone" placeholder="便于核对" maxlength="20"></div>
+    <div class="field"><label>订单备注号（付款时请备注，或截图保存）</label>
+      <input id="pay-order" readonly>
+    </div>
+    <div class="row-actions">
+      <button class="btn primary" type="button" id="pay-gen">生成订单并显示收款码</button>
+    </div>
+    <div id="pay-panel" style="display:none;margin-top:16px">
+      <p>请支付 <strong id="pay-amount"></strong>，付款备注填写上方订单号。</p>
+      <div class="qr-wrap">
+        <img src="assets/lakala-payment-channel.jpg" alt="拉卡拉收款码">
+      </div>
+      <p class="tiny">到账后请打开 <a href="account.html">/account</a> 输入兑换码，或等待后台打标。</p>
+      <div class="row-actions">
+        <a class="btn primary" href="account.html">我已付款，去开通页</a>
+      </div>
+    </div>
+    <p class="tiny" id="pay-msg"></p>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pay.js"></script>
+<script>XGPay.init();</script>
+<script>
+XGCommon.renderChrome('pricing');
+XGCommon.gateDisclaimer();
+</script>
+</body>
+</html>

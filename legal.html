@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>免责与隐私 · 选股工具站</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+  <div class="card">
+    <h2>免责声明 · 非投资建议</h2>
+    <ol>
+      <li>本产品是<strong>筛选与记录工具</strong>，不提供证券投资咨询 / 投资顾问服务。</li>
+      <li>条件命中与字段展示<strong>不构成</strong>投资建议；买卖决策自负，盈亏自担。</li>
+      <li>我们<strong>不</strong>提供个股推荐、买卖点、目标价、仓位建议。</li>
+      <li>数据有延迟/来源局限；展示「数据截止时点」；过往统计≠未来表现。</li>
+      <li>收费仅为工具额度（条件槽/频次/导出/同步等），<strong>不是</strong>投顾服务费。</li>
+    </ol>
+    <h3>隐私（简版）</h3>
+    <p class="muted">一期演示数据默认存于本机浏览器 localStorage。留资（微信号/手机）仅用于开通工具会员，不向第三方售卖。你可随时清空浏览器站点数据删除本地自选与笔记。</p>
+    <h3>禁用表述</h3>
+    <p class="muted">荐股、建议买入/卖出、今日精选、必涨、老师带你、喊单、目标价、仓位建议、AI 选股推荐、付费解锁牛股等，一律禁止。</p>
+    <div class="row-actions" id="agree-row">
+      <button class="btn primary" type="button" id="btn-agree">我已阅读并同意</button>
+      <a class="btn" href="today.html">返回复盘</a>
+    </div>
+    <p class="tiny" id="agree-status"></p>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function(){
+  function refresh(){
+    var s = document.getElementById('agree-status');
+    if (XGStorage.hasAgreedDisclaimer()) {
+      var d = XGStorage.getDisclaimer();
+      s.textContent = '已同意（' + d.version + '）· ' + d.agreedAt;
+    } else {
+      s.textContent = '尚未同意，部分功能将引导至此页。';
+    }
+  }
+  document.getElementById('btn-agree').onclick = function(){
+    XGStorage.setDisclaimer('v1');
+    refresh();
+    location.href = 'today.html';
+  };
+  refresh();
+})();
+</script>
+<script>
+XGCommon.renderChrome('legal');
+XGCommon.gateDisclaimer({skip:true});
+</script>
+</body>
+</html>

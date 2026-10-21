@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日复盘 · 日包</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+
+  <section class="hero card">
+    <h1>今天钱往哪类板块涌了——先看一眼。</h1>
+    <p class="hero-sub">盘后一包：温度 · 资金 · 情绪。游客只看到角；会员打开完整包。</p>
+    <div class="row-actions">
+      <a class="btn primary" href="#pack-section">看今日片段</a>
+      <a class="btn" href="pricing.html">打开完整日包</a>
+    </div>
+  </section>
+
+  <section class="pain-grid" aria-label="情绪钩子">
+    <div class="card pain-card">
+      <p class="pain-label">今天热闹在哪</p>
+      <p>温度卡几行数字：涨跌家数、成交额、风格一句——先抓住「今天市场很刺激」。</p>
+      <p class="muted tiny">兴奋 · 参与感（事实，非荐股）</p>
+    </div>
+    <div class="card pain-card">
+      <p class="pain-label">连续异动谁在榜</p>
+      <p>板块资金 Top3 预览；全表、细项、连榜轨迹在完整日包里。</p>
+      <p class="muted tiny">怕错过 · FOMO（只到板块）</p>
+    </div>
+    <div class="card pain-card">
+      <p class="pain-label">把猜测写成自己的记录</p>
+      <p>假设与事实锁在自己本子里，随时回翻——掌控感，不是叫你跟着谁买。</p>
+      <p class="muted tiny">掌控 · 自尊（个人笔记）</p>
+    </div>
+  </section>
+
+  <div class="card pack-intro" id="pack-section">
+    <h2>今日片段 <span id="pack-tier-badge" class="badge"></span></h2>
+    <p class="muted">免费只露角；完整温度卡 / 板块全表 / 快讯汇编需日包会员。板块观察止于板块，不含个股买卖建议。</p>
+  </div>
+
+  <div class="card" id="pack-meta"><p class="muted">加载中…</p></div>
+  <div id="pack-blocks"></div>
+  <div id="pack-cta"></div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/today.js"></script>
+<script>XGToday.load();</script>
+<script>
+XGCommon.renderChrome('today');
+XGCommon.gateDisclaimer();
+</script>
+</body>
+</html>

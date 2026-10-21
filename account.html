@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我的账号 · 选股工具站</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="disc-bar" id="disc-bar"></div>
+<div class="wrap">
+  <nav class="nav" id="site-nav"></nav>
+  <div class="card">
+    <h2>会员状态 / 兑换开通</h2>
+    <div id="acc-status"></div>
+    <h3>兑换码开通</h3>
+    <p class="muted tiny">演示码：<code>tool_month_demo</code> · <code>tool_year_demo</code> · <code>pack_quota_demo</code></p>
+    <div class="field"><label>兑换码</label><input id="acc-code" placeholder="粘贴运营发给你的码"></div>
+    <div class="row-actions">
+      <button class="btn primary" type="button" id="acc-redeem">兑换</button>
+      <a class="btn" href="pay.html">去扫码付款</a>
+    </div>
+    <p class="tiny" id="acc-msg"></p>
+  </div>
+  <div class="card">
+    <h2>本机订单（演示）</h2>
+    <div id="acc-orders"></div>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+</div>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/account.js"></script>
+<script>XGAccount.init();</script>
+<script>
+XGCommon.renderChrome('account');
+XGCommon.gateDisclaimer();
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# W1 本地真源（可含联系方式）；示例与空模板保留入库
+data/orders.json
+data/redeem_codes.json
+data/redemptions.json
+!data/orders.example.json
