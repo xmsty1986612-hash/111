@@ -83,13 +83,42 @@
     return String(n);
   }
 
+  var PLAN_LABELS = {
+    free: '免费游客',
+    tool_month: '日更复盘包会员·月',
+    tool_year: '日更复盘包会员·年',
+    pack_export: '导出特权包',
+    pack_expand: '复盘本加页',
+    pack_quota: '额度加油包',
+    pack_quota_demo: '额度加油包'
+  };
+
+  var ORDER_STATUS_LABELS = {
+    pending_pay: '待支付',
+    paid_pending_open: '已到账待开通',
+    opened: '已开通',
+    cancelled: '已取消',
+    refunded: '已退款',
+    expired: '已过期'
+  };
+
+  function planLabel(plan) {
+    if (!plan) return PLAN_LABELS.free;
+    return PLAN_LABELS[plan] || String(plan);
+  }
+
+  function orderStatusLabel(st) {
+    if (!st) return '—';
+    return ORDER_STATUS_LABELS[st] || String(st);
+  }
+
   function memberBadgeHtml() {
     if (typeof XGStorage === 'undefined') return '';
     if (XGStorage.isMember()) {
       var m = XGStorage.getMembership();
-      return '<span class="tag-member">会员 · ' + (m.plan || '') + '</span>';
+      return '<span class="tag-member">会员 · ' + planLabel(m.plan) + '</span>';
     }
-    return '<span class="tag-free">免费额度</span>';
+    return '<span class="tag-free">免费游客</span>';
   }
 
   global.XGCommon = {
@@ -98,6 +127,8 @@
     pctClass: pctClass,
     fmtPct: fmtPct,
     fmtNum: fmtNum,
+    planLabel: planLabel,
+    orderStatusLabel: orderStatusLabel,
     memberBadgeHtml: memberBadgeHtml,
     currentPage: currentPage
   };

@@ -6,6 +6,32 @@
     return typeof XGStorage !== 'undefined' && XGStorage.isMember();
   }
 
+  /* 展示层覆盖：与「可含个股名作市场事实」对齐，勿暗示免费层绝无个股名 */
+  var CANON_READ_TIP =
+    '先看温度与风格一句，再看板块 Top3；快讯可含个股名作市场事实（非买卖建议）。把「钱往哪类板块涌」写成自己的假设。';
+
+  function sanitizeReadTip(tip) {
+    if (!tip) return CANON_READ_TIP;
+    var s = String(tip);
+    if (/只到行业|默认不展示成分|不跟个股|板块榜只到|不含个股|不展示个股|成分个股/.test(s)) {
+      return CANON_READ_TIP;
+    }
+    return s;
+  }
+
+  function sanitizeReadTips(list) {
+    return (list || []).map(sanitizeReadTip);
+  }
+
+  function showDebugMeta() {
+    try {
+      var q = new URLSearchParams(location.search || '');
+      return q.get('debug') === '1' || q.get('source') === 'mock' || q.get('source') === 'api';
+    } catch (e) {
+      return false;
+    }
+  }
+
   function statusBadge(st) {
     var cls = st === 'ok' ? 'ok' : (st === 'fail' ? 'fail' : 'partial');
     return '<span class="badge ' + cls + '">' + (st || '—') + '</span>';
@@ -90,8 +116,8 @@
   function renderMoodTeaser(b) {
     if (!b || b.status === 'missing') return renderMissing(b && b.reason);
     var tip = '';
-    if (b.read_tips && b.read_tips.length) tip = b.read_tips[0];
-    else tip = '先对照温度与 Top3 板块，把「我认为资金在往哪类板块」写成自己的笔记假设——不写个股买卖。';
+    if (b.read_tips && b.read_tips.length) tip = sanitizeReadTip(b.read_tips[0]);
+    else tip = CANON_READ_TIP;
     var newsTip = '';
     if (b.news_tip && b.news_tip.text) {
       newsTip =
@@ -141,7 +167,7 @@
       return '<tr><td>' + r.rank + '</td><td>' + (r.industry || '') + '</td><td>' + XGCommon.fmtNum(r.n) +
         '</td><td>' + inflow + '</td></tr>';
     }).join('');
-    var tips = (b.read_tips || []).map(function (t) { return '<li>' + t + '</li>'; }).join('');
+    var tips = sanitizeReadTips(b.read_tips).map(function (t) { return '<li>' + t + '</li>'; }).join('');
     var dimsNote = '';
     if (b.dims) {
       var ds = b.dims.status;
@@ -220,11 +246,14 @@
     var order = pack.render_order || ['market_temp', 'fund_sector', 'news_mood'];
     var elMeta = document.getElementById('pack-meta');
     if (elMeta) {
+      var metaExtra = showDebugMeta()
+        ? (' · 数据源 ' + (from || '—'))
+        : '';
       elMeta.innerHTML =
         statusBadge(meta.source_status) +
         '<strong>交易日 ' + (meta.trade_date || '—') + '</strong> · 截止 ' + (meta.as_of || '—') +
         '<br><span class="tiny">生成 ' + (meta.generated_at || '—') + ' · schema ' + (pack.schema || '') +
-        ' · 数据源 ' + (from || '—') +
+        metaExtra +
         ' · ' + (member ? '日包会员 · 全量' : '游客 · 精简 teaser') + '</span>' +
         '<p class="tiny" style="margin-top:6px">' + (meta.disclaimer || '') + '</p>';
     }
@@ -313,7 +342,7 @@
     function fail(err) {
       if (el) {
         el.innerHTML = '<div class="missing-block">无法加载日更包（' + (err && err.message ? err.message : err) +
-          '）。请用本地 HTTP 服务打开；API 需 dz918 面板 8310 且允许跨域，否则会自动回退 mock。</div>';
+          '）。请用本地 HTTP 服务打开；API 需面板 8310 且允许跨域，否则会自动回退本地日包。</div>';
       }
     }
     function fromMock() {

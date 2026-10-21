@@ -25,10 +25,11 @@
     var m = XGStorage.getMembership();
     var el = document.getElementById('acc-status');
     var member = XGStorage.isMember();
+    var planZh = XGCommon.planLabel(m.plan || 'free');
     el.innerHTML =
       '<p>' + XGCommon.memberBadgeHtml() + '</p>' +
       '<div class="grid2">' +
-      '<div class="tile"><div class="k">计划</div><div class="v">' + (m.plan || 'free') + '</div></div>' +
+      '<div class="tile"><div class="k">计划</div><div class="v">' + planZh + '</div></div>' +
       '<div class="tile"><div class="k">有效期至</div><div class="v" style="font-size:14px">' +
       (m.periodEnd ? new Date(m.periodEnd).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' }) + ' Asia/Shanghai' : (member ? '—' : '未开通')) +
       '</div></div></div>' +
@@ -41,7 +42,7 @@
     } else {
       box.innerHTML = '<table class="data"><thead><tr><th>订单号</th><th>SKU</th><th>金额</th><th>状态</th></tr></thead><tbody>' +
         orders.map(function (o) {
-          return '<tr><td>' + o.id + '</td><td>' + o.sku + '</td><td>¥' + o.amount + '</td><td>' + o.status + '</td></tr>';
+          return '<tr><td>' + o.id + '</td><td>' + XGCommon.planLabel(o.sku) + '</td><td>¥' + o.amount + '</td><td>' + XGCommon.orderStatusLabel(o.status) + '</td></tr>';
         }).join('') + '</tbody></table>';
     }
   }
