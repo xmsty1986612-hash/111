@@ -136,7 +136,7 @@
       /* 静态优先：先落本机，立刻展示收款码 + 复制 + 飞书登记 */
       saveLocal(payload);
       showPanel(amount, oid,
-        '订单已记在本机。请复制订单号 → 扫码付款（备注填订单号）→ 飞书登记。开通请到「我的」。');
+        '演示订单已记在本机。验证期请勿扫码付款（零收款、无支付回调）。正式开通前仅作对账流程预演。');
       copyOrderId(oid);
 
       tryApiOptional(payload).then(function (serverOrder) {
@@ -144,7 +144,7 @@
         document.getElementById('pay-order').value = serverOrder.id;
         saveLocal(serverOrder);
         showPanel(serverOrder.amount, serverOrder.id,
-          '订单已同步本机服务端。请复制订单号并飞书登记；付款后到「我的」用兑换码开通。');
+          '演示订单已同步本机服务端。验证期请勿付款；无自动支付回调。');
       });
     };
   }

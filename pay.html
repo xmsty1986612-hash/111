@@ -12,7 +12,8 @@
   <nav class="nav" id="site-nav"></nav>
   <div class="card">
     <h2>开通日更复盘包会员</h2>
-    <p class="muted">支付的是<strong>日更复盘包 / 深观察</strong>费用（完整日包 + 深卡 + 连榜 + 身份）；<strong>不是荐股费，不是更准必赚</strong>。商户：厦门复昱柯德商贸有限公司（拉卡拉 NO.226031000070482045）。</p>
+    <p class="tiny" style="border:1px solid rgba(251,191,36,.45);background:rgba(251,191,36,.08);padding:10px 12px;border-radius:8px"><strong>验证期演示 · 请勿真实付款。</strong>本页可走通「生成订单→显示收款码」流程，用于对账开通预演；<strong>零收款、无支付回调</strong>，不代表已开通支付。</p>
+    <p class="muted">正式开通时，支付的是<strong>日更复盘包 / 深观察</strong>费用（完整日包 + 深卡 + 连榜 + 身份）；<strong>不是荐股费，不是更准必赚</strong>。商户备档：厦门复昱柯德商贸有限公司（拉卡拉 NO.226031000070482045）。<strong>当前为演示，勿对外表述为已开通支付。</strong></p>
     <div class="field">
       <label>选择 SKU</label>
       <select id="pay-sku">
@@ -31,13 +32,13 @@
       <button class="btn primary" type="button" id="pay-gen">生成订单并显示收款码</button>
     </div>
     <div id="pay-panel" style="display:none;margin-top:16px">
-      <p>请支付 <strong id="pay-amount"></strong>，付款备注填写上方订单号。</p>
+      <p><strong>演示金额</strong> <strong id="pay-amount"></strong>。验证期请<strong>勿扫码付款</strong>；正式收款开通前仅作对账流程演示。</p>
       <div class="qr-wrap">
         <img src="assets/lakala-payment-channel.jpg" alt="拉卡拉收款码">
       </div>
       <p class="tiny">到账后请打开 <a href="account.html">/account</a> 输入兑换码，或等待后台打标。</p>
       <div class="row-actions">
-        <a class="btn primary" href="account.html">我已付款，去开通页</a>
+        <a class="btn" href="account.html">演示：去开通页（勿付款）</a>
       </div>
     </div>
     <p class="tiny" id="pay-msg"></p>
