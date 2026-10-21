@@ -21,7 +21,7 @@
     return '<div class="member-wall">' +
       '<div class="member-wall-lock" aria-hidden="true">🔒</div>' +
       '<p class="member-wall-title">' + (label || '完整日包已锁定') + '</p>' +
-      '<p class="muted tiny">上面是游客角。会员多：全板块表、资金细项、近几日反复上榜、全日快讯——仍止于事实，不含个股买卖建议。</p>' +
+      '<p class="muted tiny">上面是游客角。会员多：全板块表、资金细项、近几日反复上榜、全日快讯——仍止于事实；可含个股名作市场事实，非买卖建议。</p>' +
       '<div class="row-actions">' +
       '<a class="btn primary" href="pricing.html">看完整日包</a>' +
       '<a class="btn" href="account.html">我有兑换码</a>' +
@@ -84,7 +84,7 @@
       (rest > 0
         ? '<p class="tiny">另有 ' + rest + ' 个板块在完整日包全表中。</p>'
         : '') +
-      '<p class="tiny">只到板块名与粗方向，默认不展示成分个股。</p>';
+      '<p class="tiny">板块区只到板块名与粗方向；快讯可含个股名作市场事实，非买卖建议。</p>';
   }
 
   function renderMoodTeaser(b) {
@@ -158,7 +158,7 @@
         : '<p class="muted">今日无达标板块统计。</p>') +
       '<p class="tiny">口径：n_stocks=' + XGCommon.fmtNum(b.n_stocks) +
       ' · unlabeled=' + XGCommon.fmtNum(b.n_unlabeled) +
-      ' · sectors=' + XGCommon.fmtNum(b.n_sectors) + '（默认不展示成分个股）</p>' +
+      ' · sectors=' + XGCommon.fmtNum(b.n_sectors) + '（板块表不列成分股名单；快讯可含个股名作事实）</p>' +
       dimsNote +
       (tips ? '<ul class="tiny">' + tips + '</ul>' : '') +
       streakHtml(b.streak || b.lianbang || b.near5_streak);
@@ -292,7 +292,7 @@
           '<div class="card">' +
           '<h2>看完整日包</h2>' +
           '<p class="muted">上面是游客角：温度精简 · 板块前三 · 一条快讯。会员多：<strong>全板块表、资金细项、近几日反复上榜、全日快讯</strong>。</p>' +
-          '<p class="tiny">不含个股买卖建议。</p>' +
+          '<p class="tiny">可含个股名作市场事实，非买卖建议。</p>' +
           '<div class="row-actions">' +
           '<a class="btn primary" href="pricing.html">看完整日包</a>' +
           '<a class="btn" href="notes.html">先写一条笔记</a>' +

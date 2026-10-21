@@ -133,10 +133,10 @@
         createdAt: new Date().toISOString()
       };
 
-      /* 静态优先：先落本机，立刻展示收款码 + 复制 + 飞书登记 */
+      /* 静态优先：先落本机，立刻展示演示占位（不放真码）+ 复制 + 飞书登记 */
       saveLocal(payload);
       showPanel(amount, oid,
-        '演示订单已记在本机。验证期请勿扫码付款（零收款、无支付回调）。正式开通前仅作对账流程预演。');
+        '演示订单已记在本机。验证期不展示真实收款码，请勿扫码、请勿付款（零收款、无支付回调）。正式开通前仅作对账流程预演。');
       copyOrderId(oid);
 
       tryApiOptional(payload).then(function (serverOrder) {
@@ -144,7 +144,7 @@
         document.getElementById('pay-order').value = serverOrder.id;
         saveLocal(serverOrder);
         showPanel(serverOrder.amount, serverOrder.id,
-          '演示订单已同步本机服务端。验证期请勿付款；无自动支付回调。');
+          '演示订单已同步本机服务端。验证期不展示真实收款码，请勿扫码、请勿付款；无自动支付回调。');
       });
     };
   }

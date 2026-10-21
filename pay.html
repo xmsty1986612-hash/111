@@ -12,7 +12,7 @@
   <nav class="nav" id="site-nav"></nav>
   <div class="card">
     <h2>开通日更复盘包会员</h2>
-    <p class="tiny" style="border:1px solid rgba(251,191,36,.45);background:rgba(251,191,36,.08);padding:10px 12px;border-radius:8px"><strong>验证期演示 · 请勿真实付款。</strong>本页可走通「生成订单→显示收款码」流程，用于对账开通预演；<strong>零收款、无支付回调</strong>，不代表已开通支付。</p>
+    <p class="tiny" style="border:1px solid rgba(251,191,36,.45);background:rgba(251,191,36,.08);padding:10px 12px;border-radius:8px"><strong>验证期演示 · 请勿真实付款。</strong>本页可走通「生成订单 → 演示占位」流程，用于对账开通预演；<strong>零收款、无支付回调、不展示真实收款码</strong>，不代表已开通支付。</p>
     <p class="muted">正式开通时，支付的是<strong>日更复盘包 / 深观察</strong>费用（全表 + 细项 + 更全快讯等完整日包）；<strong>不是荐股费，不是更准必赚</strong>。商户备档：厦门复昱柯德商贸有限公司（拉卡拉 NO.226031000070482045）。<strong>当前为演示，勿对外表述为已开通支付。</strong></p>
     <div class="field">
       <label>选择 SKU</label>
@@ -29,14 +29,18 @@
       <input id="pay-order" readonly>
     </div>
     <div class="row-actions">
-      <button class="btn primary" type="button" id="pay-gen">生成订单并显示收款码</button>
+      <button class="btn primary" type="button" id="pay-gen">生成演示订单</button>
     </div>
     <div id="pay-panel" style="display:none;margin-top:16px">
-      <p><strong>演示金额</strong> <strong id="pay-amount"></strong>。验证期请<strong>勿扫码付款</strong>；正式收款开通前仅作对账流程演示。</p>
-      <div class="qr-wrap">
-        <img src="assets/lakala-payment-channel.jpg" alt="拉卡拉收款码">
+      <p><strong>演示金额</strong> <strong id="pay-amount"></strong>。验证期<strong>请勿扫码 / 请勿付款</strong>；正式收款开通前仅作对账流程演示。</p>
+      <div class="qr-wrap qr-placeholder" role="img" aria-label="演示示意：验证期不展示真实收款码">
+        <div class="qr-placeholder-box">
+          <p class="qr-placeholder-title">演示示意 · 请勿扫码</p>
+          <p class="tiny" style="margin:6px 0 0">验证期不展示真实收款码</p>
+          <p class="tiny muted" style="margin:4px 0 0">正式收款开通前默认不放可扫图</p>
+        </div>
       </div>
-      <p class="tiny">正式开通路径：保留订单号 → 留资通道筹备中时按页内说明联系开通；人工核对后开通，通常 1 个工作日内。验证期请勿付款。</p>
+      <p class="tiny">开通路径（正式收款开通后）：保留订单号 → 留资通道筹备中时按页内说明联系；人工核对后开通，通常 1 个工作日内。<strong>验证期请勿付款。</strong></p>
       <p class="tiny" id="pay-feishu-link" aria-disabled="true" style="opacity:.85">留资通道筹备中（验证期请勿付款；正式开通时保留订单号按页内说明联系）。</p>
       <div class="row-actions">
         <a class="btn" href="account.html">演示：去开通页（勿付款）</a>
