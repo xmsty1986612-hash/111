@@ -1,0 +1,4 @@
+{
+  "name": "111",
+  "install": "test -f README.md"
+}
