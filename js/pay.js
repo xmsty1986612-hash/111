@@ -1,5 +1,6 @@
 (function (global) {
-  var FEISHU_FORM_URL = 'FEISHU_FORM_URL_PLACEHOLDER';
+  /* 真飞书表 URL 配好后写入；空或占位则不展示可点链接 */
+  var FEISHU_FORM_URL = '';
 
   function orderId() {
     var d = new Date();
@@ -54,8 +55,21 @@
     document.getElementById('pay-msg').textContent = msg || '';
     var link = document.getElementById('pay-feishu-link');
     if (link) {
-      link.href = FEISHU_FORM_URL;
-      link.textContent = '打开飞书登记表（' + FEISHU_FORM_URL + '）';
+      var url = (FEISHU_FORM_URL || '').trim();
+      var bad = !url || /PLACEHOLDER/i.test(url);
+      if (bad) {
+        link.removeAttribute('href');
+        link.setAttribute('aria-disabled', 'true');
+        link.style.pointerEvents = 'none';
+        link.style.opacity = '0.85';
+        link.textContent = '留资通道筹备中（扫码付款后保留订单号，稍后按页内说明开通）';
+      } else {
+        link.href = url;
+        link.textContent = '打开飞书登记表';
+        link.removeAttribute('aria-disabled');
+        link.style.pointerEvents = '';
+        link.style.opacity = '';
+      }
     }
     enableCopy(oid);
   }

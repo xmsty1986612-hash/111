@@ -34,7 +34,7 @@
       var list = XGStorage.getNotes();
       var limit = XGStorage.notesLimit() + ((XGStorage.getMembership().extraNotes) || 0);
       if (list.length >= limit) {
-        err.textContent = '笔记条数已达上限，请开通工具会员或笔记扩容包。';
+        err.textContent = '笔记条数已达上限，请开通日更复盘包会员或笔记扩容包。';
         setTimeout(function () { location.href = 'pay.html'; }, 800);
         return;
       }

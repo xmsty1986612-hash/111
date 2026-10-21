@@ -36,7 +36,7 @@
       var list = XGStorage.getWatchlist();
       var limit = XGStorage.watchlistLimit() + ((XGStorage.getMembership().extraWatch) || 0);
       if (list.length >= limit) {
-        err.textContent = '已达免费/当前额度上限。请开通工具会员或额度包。';
+        err.textContent = '已达免费/当前额度上限。请开通日更复盘包会员或加油包。';
         setTimeout(function () { location.href = 'pricing.html'; }, 800);
         return;
       }
