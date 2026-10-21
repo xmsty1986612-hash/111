@@ -1,1 +1,813 @@
-{"schema": "oa_daily_pack_v0.1", "meta": {"trade_date": "2026-10-21", "as_of": "2026-10-21 收盘", "generated_at": "2026-10-21 12:53:57 Asia/Shanghai", "source_status": "ok", "disclaimer": "本内容为信息汇编与读法，不构成投资建议；不荐股；自负盈亏。", "cta": {"hook": "打开网站 → 记复盘笔记 / 管理自选", "sku": "工具会员（条件额度·导出）", "plan": "A", "path": "/notes"}, "consumer_note": "一期消费方=网站看板/复盘；公号编辑台 UI 后置"}, "blocks": {"market_temp": {"status": "ok", "reason": "", "trade_date": "2026-10-21", "as_of": "2026-10-21 收盘", "indices": [{"name": "上证指数", "price": 3723.9518, "pct": -0.31}, {"name": "深证成指", "price": 11764.971, "pct": -0.31}, {"name": "创业板指", "price": 2709.957, "pct": -1.07}, {"name": "科创50", "price": 1349.5364, "pct": 0.53}, {"name": "上证50", "price": 2751.2595, "pct": -0.52}], "up_count": 1217, "down_count": 1023, "zt": 44, "dt": 0, "zb": 17, "amount_yi": 9400.0, "amount_wanyi": 0.94, "volume_band": "健康", "temp_score": 46.4, "phase": "震荡/混沌", "phase_name": "震荡/混沌", "style_label": "大盘强于小盘", "caliber": "", "gap": ""}, "fund_sector": {"status": "ok", "reason": "", "trade_date": "2026-10-21", "as_of": "2026-10-21 收盘", "generated_at": "2026-10-21 12:53:58 Asia/Shanghai", "read_tips": ["本榜=四维资金异动达标票按行业聚合，看的是板块统计不是个股信号。", "不看：个股买卖、龙头跟买、目标价。", "可与网站「自选/复盘笔记」对照自己的板块假设（非推荐）。"], "title": "资金异动板块参考", "rows": [{"rank": 1, "industry": "光学光电子", "n": 1, "inflow_yi": 1.7}, {"rank": 2, "industry": "计算机设备", "n": 1, "inflow_yi": 1.51}, {"rank": 3, "industry": "塑料", "n": 1, "inflow_yi": 0.81}, {"rank": 4, "industry": "专业工程", "n": 1, "inflow_yi": 0.69}, {"rank": 5, "industry": "电力", "n": 1, "inflow_yi": 0.68}, {"rank": 6, "industry": "软件开发", "n": 1, "inflow_yi": 0.67}], "n_stocks": 10, "n_unlabeled": 0, "n_sectors": 10}, "news_mood": {"status": "ok", "reason": "", "items": [{"time": "2026-10-21 12:52:14", "text": "新加坡敦促企业储备一周的口罩库存。"}, {"time": "2026-10-21 12:52:12", "text": "纽约期银日内跌1%，现报57.41美元/盎司。"}, {"time": "2026-10-21 12:52:00", "text": "【美政府推出“欺诈举报人激励计划”，特朗普：我将担任所有这类决定的仲裁者】据美联社报道，美国总统特朗普和副总统万斯当地时间10月20日宣布启动一项耗资2500万美元的计划，旨在鼓励公众举报涉嫌针对美联邦政府和项目的欺诈行为，加大力度遏制联邦项目和资金的滥用问题。白宫方面介绍，根据这项名为“欺诈举报人激励计划”的项目，任何提交线索并最终促成欺诈定罪或重大联邦执法行动的人，最高可获得3万美元奖励。该计划将由美国司法部负责实施。特朗普在白宫椭圆形办公室宣布该计划时称，奖金将按举报线索所揭露的欺诈金额的1%计算，在多人声称提供了同一线索的情况下，将由他本人决定奖励归属。“我将担任所有这类决定的仲裁者。”特朗普说。（环球网）"}], "source": "sina", "news_ok": true, "news_err": "", "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。", "phase_name": "震荡/混沌", "score": 46.4, "trend_name": "震荡", "caliber": "", "fallback": "中性/数据不足"}, "tool_friday": {"status": "template", "theme": "复盘四格：事实/假设/验证/结果", "body_slots": ["事实：今日温度/板块/情绪客观数字（不写买卖）", "假设：自己对板块或风格的判断（自选笔记）", "验证：对照次日/本周数据，不改历史记录", "结果：记下对错与触发条件，用网站工具会员额度"], "cta": {"hook": "复制模板到网站笔记", "path": "/notes", "pricing_hint": "¥28/月 · ¥198/年"}, "forbid": "禁止本栏出现个股代码与买卖建议"}}, "render_order": ["market_temp", "fund_sector", "news_mood"]}
+{
+  "schema": "oa_daily_pack_v0.2",
+  "meta": {
+    "trade_date": "2026-10-21",
+    "as_of": "2026-10-21 收盘",
+    "generated_at": "2026-10-21 13:05:16 Asia/Shanghai",
+    "source_status": "ok",
+    "disclaimer": "本内容为信息汇编与读法，不构成投资建议；不荐股；自负盈亏。",
+    "cta": {
+      "hook": "打开完整日包 → 全表板块资金 + 深层情绪 + 连榜",
+      "sku": "日更复盘包会员（深观察）",
+      "plan": "A",
+      "path": "/pricing"
+    },
+    "consumer_note": "一期消费方=网站看板/复盘；free_teaser=游客钩子，full_pack=会员完整包；鉴权由网站侧负责"
+  },
+  "access": {
+    "free_keys": [
+      "free_teaser"
+    ],
+    "member_keys": [
+      "full_pack"
+    ],
+    "auth_note": "picker 不实现付费鉴权；网站用 view=free|full 或自切字段"
+  },
+  "free_teaser": {
+    "market_temp": {
+      "status": "ok",
+      "reason": "",
+      "trade_date": "2026-10-21",
+      "as_of": "2026-10-21 收盘",
+      "up_count": 1115,
+      "down_count": 1142,
+      "amount_wanyi": 0.94,
+      "style_label": "大盘强于小盘",
+      "temp_score": 46.4,
+      "phase_name": "震荡/混沌"
+    },
+    "fund_sector": {
+      "status": "ok",
+      "reason": "",
+      "title": "资金异动板块预览",
+      "rows": [
+        {
+          "rank": 1,
+          "industry": "光学光电子",
+          "n": 1,
+          "signal": "↑"
+        },
+        {
+          "rank": 2,
+          "industry": "计算机设备",
+          "n": 1,
+          "signal": "↑"
+        },
+        {
+          "rank": 3,
+          "industry": "塑料",
+          "n": 1,
+          "signal": "↑"
+        }
+      ],
+      "n_preview": 3,
+      "n_sectors_total": 10,
+      "teaser_note": "游客仅 Top3；完整全表+细项+连榜见会员日包"
+    },
+    "news_mood": {
+      "status": "ok",
+      "reason": "",
+      "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。",
+      "news_tip": {
+        "time": "2026-10-21 13:04:39",
+        "text": "物理AI概念反复走强，午后利亚德封20cm涨停，凡拓数创涨超10%，凌云光、鼎捷数智、索辰科技、东土科技、奥比中光跟涨。"
+      }
+    },
+    "read_tip": "先看温度与风格一句，再看板块榜只到行业名；把「钱往哪类板块涌」写成自己的假设，不跟个股。"
+  },
+  "full_pack": {
+    "market_temp": {
+      "status": "ok",
+      "reason": "",
+      "trade_date": "2026-10-21",
+      "as_of": "2026-10-21 收盘",
+      "indices": [
+        {
+          "name": "上证指数",
+          "price": 3718.5308,
+          "pct": -0.45
+        },
+        {
+          "name": "深证成指",
+          "price": 11742.233,
+          "pct": -0.5
+        },
+        {
+          "name": "创业板指",
+          "price": 2704.466,
+          "pct": -1.27
+        },
+        {
+          "name": "科创50",
+          "price": 1344.7418,
+          "pct": 0.17
+        },
+        {
+          "name": "上证50",
+          "price": 2748.3417,
+          "pct": -0.63
+        }
+      ],
+      "up_count": 1115,
+      "down_count": 1142,
+      "zt": 44,
+      "dt": 0,
+      "zb": 17,
+      "amount_yi": 9400.0,
+      "amount_wanyi": 0.94,
+      "volume_band": "健康",
+      "temp_score": 46.4,
+      "phase": "震荡/混沌",
+      "phase_name": "震荡/混沌",
+      "style_label": "大盘强于小盘",
+      "caliber": "",
+      "gap": "",
+      "near5_compare": {
+        "status": "missing",
+        "reason": "history_lt_2_days",
+        "window_days": 5,
+        "series": [
+          {
+            "trade_date": "2026-10-21",
+            "temp_score": 46.4,
+            "phase_name": "震荡/混沌",
+            "up_count": 1115,
+            "down_count": 1142,
+            "amount_wanyi": 0.94,
+            "style_label": "大盘强于小盘"
+          }
+        ],
+        "note": "近5日对比待攒历史；结构已预留"
+      }
+    },
+    "fund_sector": {
+      "status": "ok",
+      "reason": "",
+      "trade_date": "2026-10-21",
+      "as_of": "2026-10-21 收盘",
+      "generated_at": "2026-10-21 13:05:16 Asia/Shanghai",
+      "read_tips": [
+        "本榜=四维资金异动达标票按行业聚合，看的是板块统计不是个股信号。",
+        "不看：个股买卖、龙头跟买、目标价。",
+        "可与网站「自选/复盘笔记」对照自己的板块假设（非推荐）。"
+      ],
+      "title": "资金异动板块参考",
+      "rows": [
+        {
+          "rank": 1,
+          "industry": "光学光电子",
+          "n": 1,
+          "inflow_yi": 1.7
+        },
+        {
+          "rank": 2,
+          "industry": "计算机设备",
+          "n": 1,
+          "inflow_yi": 1.51
+        },
+        {
+          "rank": 3,
+          "industry": "塑料",
+          "n": 1,
+          "inflow_yi": 0.81
+        },
+        {
+          "rank": 4,
+          "industry": "专业工程",
+          "n": 1,
+          "inflow_yi": 0.69
+        },
+        {
+          "rank": 5,
+          "industry": "电力",
+          "n": 1,
+          "inflow_yi": 0.68
+        },
+        {
+          "rank": 6,
+          "industry": "软件开发",
+          "n": 1,
+          "inflow_yi": 0.67
+        }
+      ],
+      "n_stocks": 10,
+      "n_unlabeled": 0,
+      "n_sectors": 10,
+      "dims": {
+        "status": "partial",
+        "reason": "sector_agg_only_n_inflow",
+        "rows": [
+          {
+            "industry": "光学光电子",
+            "n": 1,
+            "inflow_yi": 1.7,
+            "dim_net_inflow": 1.7,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "计算机设备",
+            "n": 1,
+            "inflow_yi": 1.51,
+            "dim_net_inflow": 1.51,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "塑料",
+            "n": 1,
+            "inflow_yi": 0.81,
+            "dim_net_inflow": 0.81,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "专业工程",
+            "n": 1,
+            "inflow_yi": 0.69,
+            "dim_net_inflow": 0.69,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "电力",
+            "n": 1,
+            "inflow_yi": 0.68,
+            "dim_net_inflow": 0.68,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "软件开发",
+            "n": 1,
+            "inflow_yi": 0.67,
+            "dim_net_inflow": 0.67,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          }
+        ],
+        "note": "现网板块层仅 n + 主力净流入；其余三维结构预留"
+      },
+      "streak": {
+        "status": "missing",
+        "reason": "history_lt_2_days",
+        "window_days": 5,
+        "items": [
+          {
+            "industry": "光学光电子",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 1,
+                "n": 1,
+                "inflow_yi": 1.7
+              }
+            ]
+          },
+          {
+            "industry": "计算机设备",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 2,
+                "n": 1,
+                "inflow_yi": 1.51
+              }
+            ]
+          },
+          {
+            "industry": "塑料",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 3,
+                "n": 1,
+                "inflow_yi": 0.81
+              }
+            ]
+          },
+          {
+            "industry": "专业工程",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 4,
+                "n": 1,
+                "inflow_yi": 0.69
+              }
+            ]
+          },
+          {
+            "industry": "电力",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 5,
+                "n": 1,
+                "inflow_yi": 0.68
+              }
+            ]
+          },
+          {
+            "industry": "软件开发",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 6,
+                "n": 1,
+                "inflow_yi": 0.67
+              }
+            ]
+          }
+        ],
+        "note": "连榜轨迹待攒历史；结构已预留 streak/history"
+      }
+    },
+    "news_mood": {
+      "status": "ok",
+      "reason": "",
+      "items": [
+        {
+          "time": "2026-10-21 13:04:39",
+          "text": "物理AI概念反复走强，午后利亚德封20cm涨停，凡拓数创涨超10%，凌云光、鼎捷数智、索辰科技、东土科技、奥比中光跟涨。"
+        },
+        {
+          "time": "2026-10-21 13:04:04",
+          "text": "【鲁比奥称若无美国支持，乌克兰将不复存在】美国国务卿鲁比奥为特朗普政府对乌支持政策辩护，表示如果没有美方援助，乌克兰将不复存在。鲁比奥周三在印度访问期间对记者表示：“如果没有美国提供的援助，包括本届特朗普政府的支持，乌克兰现在就不会存在。作为主权国家的乌克兰将不复存在。”鲁比奥此番发言，是回应媒体相关报道。报道称 SpaceX 首席执行官马斯克近期下令放缓星链卫星系统服务，而乌克兰依靠星链抵御俄军空袭。该报道援引多名匿名美籍及其他国家官员消息：星链降速消息公开后，马斯克曾就此与特朗普沟通；另有知情人士称，作为特朗普盟友，马斯克在该措施落地前，就已经和白宫官员讨论过星链限流事宜。"
+        },
+        {
+          "time": "2026-10-21 13:01:13",
+          "text": "【伊朗称三艘油轮在霍尔木兹触雷 】伊朗伊斯兰革命卫队10月20日表示，一艘非法航行的超级油轮在霍尔木兹海峡南部触雷后爆炸起火。当天早些时候，伊朗伊斯兰革命卫队表示，两艘“违规”油轮在霍尔木兹海峡触碰了由其海军部队布设的水雷，导致船只爆炸起火并被迫停航。 伊朗伊斯兰革命卫队警告称，试图穿越海峡内布设水雷区域属于“非法”行为，将导致“违规者”的资产被焚毁。若美方继续此类“恶意行径”，石油公司将面临更惨痛的代价。 （ CCTV国际时讯  ）"
+        },
+        {
+          "time": "2026-10-21 13:00:58",
+          "text": "【中国科学技术协会名誉主席万钢：预期2030年L3级自动驾驶渗透率将超过35%】10月21日，中国科学技术协会名誉主席万钢在2026世界智能网联汽车大会开幕式上表示，随着新型传感器件和系统等成本下探及AI大模型技术加速赋能，2026年上半年我国具备L2级辅助驾驶功能的乘用车新车渗透率已突破70%，预计2030年将达到95%以上。同时，高级别自动驾驶技术加速落地，截至2026年上半年，全国已开放测试道路5.7万公里，发放测试示范牌照超2万张，累计测试里程超2.2亿公里，预期2030年，L3级自动驾驶渗透率将超过35%。"
+        },
+        {
+          "time": "2026-10-21 13:00:22",
+          "text": "新加坡海峡时报指数上涨1%，至5456.44。"
+        }
+      ],
+      "source": "sina",
+      "news_ok": true,
+      "news_err": "",
+      "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。",
+      "phase_name": "震荡/混沌",
+      "score": 46.4,
+      "trend_name": "震荡",
+      "caliber": "",
+      "fallback": "中性/数据不足",
+      "deep": {
+        "status": "ok",
+        "reason": "",
+        "phase_name": "震荡/混沌",
+        "score": 46.4,
+        "trend_name": "震荡",
+        "caliber": "",
+        "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。",
+        "structure_note": "情绪卡=相位/分数/3日趋势/涨跌停统计的描述性汇编；不是仓位指令，不含个股买卖建议。",
+        "components": {
+          "phase_name": "震荡/混沌",
+          "score": 46.4,
+          "trend_name": "震荡",
+          "zt_zb_dt_hint": "详见温度卡 zt/zb/dt；本卡不重复操作建议"
+        },
+        "items": [
+          {
+            "time": "2026-10-21 13:04:39",
+            "text": "物理AI概念反复走强，午后利亚德封20cm涨停，凡拓数创涨超10%，凌云光、鼎捷数智、索辰科技、东土科技、奥比中光跟涨。"
+          },
+          {
+            "time": "2026-10-21 13:04:04",
+            "text": "【鲁比奥称若无美国支持，乌克兰将不复存在】美国国务卿鲁比奥为特朗普政府对乌支持政策辩护，表示如果没有美方援助，乌克兰将不复存在。鲁比奥周三在印度访问期间对记者表示：“如果没有美国提供的援助，包括本届特朗普政府的支持，乌克兰现在就不会存在。作为主权国家的乌克兰将不复存在。”鲁比奥此番发言，是回应媒体相关报道。报道称 SpaceX 首席执行官马斯克近期下令放缓星链卫星系统服务，而乌克兰依靠星链抵御俄军空袭。该报道援引多名匿名美籍及其他国家官员消息：星链降速消息公开后，马斯克曾就此与特朗普沟通；另有知情人士称，作为特朗普盟友，马斯克在该措施落地前，就已经和白宫官员讨论过星链限流事宜。"
+          },
+          {
+            "time": "2026-10-21 13:01:13",
+            "text": "【伊朗称三艘油轮在霍尔木兹触雷 】伊朗伊斯兰革命卫队10月20日表示，一艘非法航行的超级油轮在霍尔木兹海峡南部触雷后爆炸起火。当天早些时候，伊朗伊斯兰革命卫队表示，两艘“违规”油轮在霍尔木兹海峡触碰了由其海军部队布设的水雷，导致船只爆炸起火并被迫停航。 伊朗伊斯兰革命卫队警告称，试图穿越海峡内布设水雷区域属于“非法”行为，将导致“违规者”的资产被焚毁。若美方继续此类“恶意行径”，石油公司将面临更惨痛的代价。 （ CCTV国际时讯  ）"
+          },
+          {
+            "time": "2026-10-21 13:00:58",
+            "text": "【中国科学技术协会名誉主席万钢：预期2030年L3级自动驾驶渗透率将超过35%】10月21日，中国科学技术协会名誉主席万钢在2026世界智能网联汽车大会开幕式上表示，随着新型传感器件和系统等成本下探及AI大模型技术加速赋能，2026年上半年我国具备L2级辅助驾驶功能的乘用车新车渗透率已突破70%，预计2030年将达到95%以上。同时，高级别自动驾驶技术加速落地，截至2026年上半年，全国已开放测试道路5.7万公里，发放测试示范牌照超2万张，累计测试里程超2.2亿公里，预期2030年，L3级自动驾驶渗透率将超过35%。"
+          },
+          {
+            "time": "2026-10-21 13:00:22",
+            "text": "新加坡海峡时报指数上涨1%，至5456.44。"
+          }
+        ],
+        "source": "sina"
+      }
+    },
+    "tool_friday": {
+      "status": "template",
+      "theme": "复盘四格：事实/假设/验证/结果",
+      "body_slots": [
+        "事实：今日温度/板块/情绪客观数字（不写买卖）",
+        "假设：自己对板块或风格的判断（自选笔记）",
+        "验证：对照次日/本周数据，不改历史记录",
+        "结果：记下对错与触发条件，用网站日包会员笔记空间"
+      ],
+      "cta": {
+        "hook": "复制模板到网站笔记",
+        "path": "/notes",
+        "pricing_hint": "¥28/月 · ¥198/年"
+      },
+      "forbid": "禁止本栏出现个股代码与买卖建议"
+    }
+  },
+  "blocks": {
+    "market_temp": {
+      "status": "ok",
+      "reason": "",
+      "trade_date": "2026-10-21",
+      "as_of": "2026-10-21 收盘",
+      "indices": [
+        {
+          "name": "上证指数",
+          "price": 3718.5308,
+          "pct": -0.45
+        },
+        {
+          "name": "深证成指",
+          "price": 11742.233,
+          "pct": -0.5
+        },
+        {
+          "name": "创业板指",
+          "price": 2704.466,
+          "pct": -1.27
+        },
+        {
+          "name": "科创50",
+          "price": 1344.7418,
+          "pct": 0.17
+        },
+        {
+          "name": "上证50",
+          "price": 2748.3417,
+          "pct": -0.63
+        }
+      ],
+      "up_count": 1115,
+      "down_count": 1142,
+      "zt": 44,
+      "dt": 0,
+      "zb": 17,
+      "amount_yi": 9400.0,
+      "amount_wanyi": 0.94,
+      "volume_band": "健康",
+      "temp_score": 46.4,
+      "phase": "震荡/混沌",
+      "phase_name": "震荡/混沌",
+      "style_label": "大盘强于小盘",
+      "caliber": "",
+      "gap": "",
+      "near5_compare": {
+        "status": "missing",
+        "reason": "history_lt_2_days",
+        "window_days": 5,
+        "series": [
+          {
+            "trade_date": "2026-10-21",
+            "temp_score": 46.4,
+            "phase_name": "震荡/混沌",
+            "up_count": 1115,
+            "down_count": 1142,
+            "amount_wanyi": 0.94,
+            "style_label": "大盘强于小盘"
+          }
+        ],
+        "note": "近5日对比待攒历史；结构已预留"
+      }
+    },
+    "fund_sector": {
+      "status": "ok",
+      "reason": "",
+      "trade_date": "2026-10-21",
+      "as_of": "2026-10-21 收盘",
+      "generated_at": "2026-10-21 13:05:16 Asia/Shanghai",
+      "read_tips": [
+        "本榜=四维资金异动达标票按行业聚合，看的是板块统计不是个股信号。",
+        "不看：个股买卖、龙头跟买、目标价。",
+        "可与网站「自选/复盘笔记」对照自己的板块假设（非推荐）。"
+      ],
+      "title": "资金异动板块参考",
+      "rows": [
+        {
+          "rank": 1,
+          "industry": "光学光电子",
+          "n": 1,
+          "inflow_yi": 1.7
+        },
+        {
+          "rank": 2,
+          "industry": "计算机设备",
+          "n": 1,
+          "inflow_yi": 1.51
+        },
+        {
+          "rank": 3,
+          "industry": "塑料",
+          "n": 1,
+          "inflow_yi": 0.81
+        },
+        {
+          "rank": 4,
+          "industry": "专业工程",
+          "n": 1,
+          "inflow_yi": 0.69
+        },
+        {
+          "rank": 5,
+          "industry": "电力",
+          "n": 1,
+          "inflow_yi": 0.68
+        },
+        {
+          "rank": 6,
+          "industry": "软件开发",
+          "n": 1,
+          "inflow_yi": 0.67
+        }
+      ],
+      "n_stocks": 10,
+      "n_unlabeled": 0,
+      "n_sectors": 10,
+      "dims": {
+        "status": "partial",
+        "reason": "sector_agg_only_n_inflow",
+        "rows": [
+          {
+            "industry": "光学光电子",
+            "n": 1,
+            "inflow_yi": 1.7,
+            "dim_net_inflow": 1.7,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "计算机设备",
+            "n": 1,
+            "inflow_yi": 1.51,
+            "dim_net_inflow": 1.51,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "塑料",
+            "n": 1,
+            "inflow_yi": 0.81,
+            "dim_net_inflow": 0.81,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "专业工程",
+            "n": 1,
+            "inflow_yi": 0.69,
+            "dim_net_inflow": 0.69,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "电力",
+            "n": 1,
+            "inflow_yi": 0.68,
+            "dim_net_inflow": 0.68,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          },
+          {
+            "industry": "软件开发",
+            "n": 1,
+            "inflow_yi": 0.67,
+            "dim_net_inflow": 0.67,
+            "dim_turnover": null,
+            "dim_position": null,
+            "dim_strength": null,
+            "dims_status": "partial",
+            "dims_reason": "sector_agg_only_n_inflow; finer dims pending"
+          }
+        ],
+        "note": "现网板块层仅 n + 主力净流入；其余三维结构预留"
+      },
+      "streak": {
+        "status": "missing",
+        "reason": "history_lt_2_days",
+        "window_days": 5,
+        "items": [
+          {
+            "industry": "光学光电子",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 1,
+                "n": 1,
+                "inflow_yi": 1.7
+              }
+            ]
+          },
+          {
+            "industry": "计算机设备",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 2,
+                "n": 1,
+                "inflow_yi": 1.51
+              }
+            ]
+          },
+          {
+            "industry": "塑料",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 3,
+                "n": 1,
+                "inflow_yi": 0.81
+              }
+            ]
+          },
+          {
+            "industry": "专业工程",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 4,
+                "n": 1,
+                "inflow_yi": 0.69
+              }
+            ]
+          },
+          {
+            "industry": "电力",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 5,
+                "n": 1,
+                "inflow_yi": 0.68
+              }
+            ]
+          },
+          {
+            "industry": "软件开发",
+            "streak": 1,
+            "history": [
+              {
+                "trade_date": "2026-10-21",
+                "rank": 6,
+                "n": 1,
+                "inflow_yi": 0.67
+              }
+            ]
+          }
+        ],
+        "note": "连榜轨迹待攒历史；结构已预留 streak/history"
+      }
+    },
+    "news_mood": {
+      "status": "ok",
+      "reason": "",
+      "items": [
+        {
+          "time": "2026-10-21 13:04:39",
+          "text": "物理AI概念反复走强，午后利亚德封20cm涨停，凡拓数创涨超10%，凌云光、鼎捷数智、索辰科技、东土科技、奥比中光跟涨。"
+        },
+        {
+          "time": "2026-10-21 13:04:04",
+          "text": "【鲁比奥称若无美国支持，乌克兰将不复存在】美国国务卿鲁比奥为特朗普政府对乌支持政策辩护，表示如果没有美方援助，乌克兰将不复存在。鲁比奥周三在印度访问期间对记者表示：“如果没有美国提供的援助，包括本届特朗普政府的支持，乌克兰现在就不会存在。作为主权国家的乌克兰将不复存在。”鲁比奥此番发言，是回应媒体相关报道。报道称 SpaceX 首席执行官马斯克近期下令放缓星链卫星系统服务，而乌克兰依靠星链抵御俄军空袭。该报道援引多名匿名美籍及其他国家官员消息：星链降速消息公开后，马斯克曾就此与特朗普沟通；另有知情人士称，作为特朗普盟友，马斯克在该措施落地前，就已经和白宫官员讨论过星链限流事宜。"
+        },
+        {
+          "time": "2026-10-21 13:01:13",
+          "text": "【伊朗称三艘油轮在霍尔木兹触雷 】伊朗伊斯兰革命卫队10月20日表示，一艘非法航行的超级油轮在霍尔木兹海峡南部触雷后爆炸起火。当天早些时候，伊朗伊斯兰革命卫队表示，两艘“违规”油轮在霍尔木兹海峡触碰了由其海军部队布设的水雷，导致船只爆炸起火并被迫停航。 伊朗伊斯兰革命卫队警告称，试图穿越海峡内布设水雷区域属于“非法”行为，将导致“违规者”的资产被焚毁。若美方继续此类“恶意行径”，石油公司将面临更惨痛的代价。 （ CCTV国际时讯  ）"
+        },
+        {
+          "time": "2026-10-21 13:00:58",
+          "text": "【中国科学技术协会名誉主席万钢：预期2030年L3级自动驾驶渗透率将超过35%】10月21日，中国科学技术协会名誉主席万钢在2026世界智能网联汽车大会开幕式上表示，随着新型传感器件和系统等成本下探及AI大模型技术加速赋能，2026年上半年我国具备L2级辅助驾驶功能的乘用车新车渗透率已突破70%，预计2030年将达到95%以上。同时，高级别自动驾驶技术加速落地，截至2026年上半年，全国已开放测试道路5.7万公里，发放测试示范牌照超2万张，累计测试里程超2.2亿公里，预期2030年，L3级自动驾驶渗透率将超过35%。"
+        },
+        {
+          "time": "2026-10-21 13:00:22",
+          "text": "新加坡海峡时报指数上涨1%，至5456.44。"
+        }
+      ],
+      "source": "sina",
+      "news_ok": true,
+      "news_err": "",
+      "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。",
+      "phase_name": "震荡/混沌",
+      "score": 46.4,
+      "trend_name": "震荡",
+      "caliber": "",
+      "fallback": "中性/数据不足",
+      "deep": {
+        "status": "ok",
+        "reason": "",
+        "phase_name": "震荡/混沌",
+        "score": 46.4,
+        "trend_name": "震荡",
+        "caliber": "",
+        "one_liner": "今日情绪：震荡/混沌（46.4分，3日震荡）；涨停44、炸板17、跌停0。",
+        "structure_note": "情绪卡=相位/分数/3日趋势/涨跌停统计的描述性汇编；不是仓位指令，不含个股买卖建议。",
+        "components": {
+          "phase_name": "震荡/混沌",
+          "score": 46.4,
+          "trend_name": "震荡",
+          "zt_zb_dt_hint": "详见温度卡 zt/zb/dt；本卡不重复操作建议"
+        },
+        "items": [
+          {
+            "time": "2026-10-21 13:04:39",
+            "text": "物理AI概念反复走强，午后利亚德封20cm涨停，凡拓数创涨超10%，凌云光、鼎捷数智、索辰科技、东土科技、奥比中光跟涨。"
+          },
+          {
+            "time": "2026-10-21 13:04:04",
+            "text": "【鲁比奥称若无美国支持，乌克兰将不复存在】美国国务卿鲁比奥为特朗普政府对乌支持政策辩护，表示如果没有美方援助，乌克兰将不复存在。鲁比奥周三在印度访问期间对记者表示：“如果没有美国提供的援助，包括本届特朗普政府的支持，乌克兰现在就不会存在。作为主权国家的乌克兰将不复存在。”鲁比奥此番发言，是回应媒体相关报道。报道称 SpaceX 首席执行官马斯克近期下令放缓星链卫星系统服务，而乌克兰依靠星链抵御俄军空袭。该报道援引多名匿名美籍及其他国家官员消息：星链降速消息公开后，马斯克曾就此与特朗普沟通；另有知情人士称，作为特朗普盟友，马斯克在该措施落地前，就已经和白宫官员讨论过星链限流事宜。"
+          },
+          {
+            "time": "2026-10-21 13:01:13",
+            "text": "【伊朗称三艘油轮在霍尔木兹触雷 】伊朗伊斯兰革命卫队10月20日表示，一艘非法航行的超级油轮在霍尔木兹海峡南部触雷后爆炸起火。当天早些时候，伊朗伊斯兰革命卫队表示，两艘“违规”油轮在霍尔木兹海峡触碰了由其海军部队布设的水雷，导致船只爆炸起火并被迫停航。 伊朗伊斯兰革命卫队警告称，试图穿越海峡内布设水雷区域属于“非法”行为，将导致“违规者”的资产被焚毁。若美方继续此类“恶意行径”，石油公司将面临更惨痛的代价。 （ CCTV国际时讯  ）"
+          },
+          {
+            "time": "2026-10-21 13:00:58",
+            "text": "【中国科学技术协会名誉主席万钢：预期2030年L3级自动驾驶渗透率将超过35%】10月21日，中国科学技术协会名誉主席万钢在2026世界智能网联汽车大会开幕式上表示，随着新型传感器件和系统等成本下探及AI大模型技术加速赋能，2026年上半年我国具备L2级辅助驾驶功能的乘用车新车渗透率已突破70%，预计2030年将达到95%以上。同时，高级别自动驾驶技术加速落地，截至2026年上半年，全国已开放测试道路5.7万公里，发放测试示范牌照超2万张，累计测试里程超2.2亿公里，预期2030年，L3级自动驾驶渗透率将超过35%。"
+          },
+          {
+            "time": "2026-10-21 13:00:22",
+            "text": "新加坡海峡时报指数上涨1%，至5456.44。"
+          }
+        ],
+        "source": "sina"
+      }
+    },
+    "tool_friday": {
+      "status": "template",
+      "theme": "复盘四格：事实/假设/验证/结果",
+      "body_slots": [
+        "事实：今日温度/板块/情绪客观数字（不写买卖）",
+        "假设：自己对板块或风格的判断（自选笔记）",
+        "验证：对照次日/本周数据，不改历史记录",
+        "结果：记下对错与触发条件，用网站日包会员笔记空间"
+      ],
+      "cta": {
+        "hook": "复制模板到网站笔记",
+        "path": "/notes",
+        "pricing_hint": "¥28/月 · ¥198/年"
+      },
+      "forbid": "禁止本栏出现个股代码与买卖建议"
+    }
+  },
+  "render_order": [
+    "market_temp",
+    "fund_sector",
+    "news_mood"
+  ],
+  "migration": {
+    "from": "oa_daily_pack_v0.1",
+    "note": "v0.2 增 free_teaser/full_pack/access；blocks 仍可用作 full_pack 别名"
+  }
+}
